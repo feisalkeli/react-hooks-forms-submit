@@ -14,13 +14,17 @@ function Form(props) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    const formData = {
-      firstName: firstName,
-      lastName: lastName,
-    };
-    setSubmittedData(dataArray);
-    setFirstName("");
-    setLastName("");
+    if (firstName.length > 0) {
+      const formData = {
+        firstName: firstName,
+        lastName: lastName,
+      };
+      setSubmittedData(dataArray);
+      setFirstName("");
+      setLastName("");
+    } else {
+      setErrors(["First name is required"]);
+    }
   }
   const listOfSubmissions = submittedData.map(data, (index) => {
     return (
